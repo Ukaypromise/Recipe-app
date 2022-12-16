@@ -1,0 +1,35 @@
+<div class="d-flex justify-content-center">
+    <h1>Shopping Lists</h1>
+</div>
+
+<div class="d-flex justify-content-between">
+		<h5>Amount of food items to buy: <%= @recipe_foods.count %> </h4>
+		<h5>Total price of food needed: <%= @total %></h5>
+</div>
+
+<br />
+
+<table class='table table-striped table-bordered table-hover w-75 mx-auto'>
+  <thead class='table-dark'>
+    <tr>
+      <th>Food</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @recipe_foods.each do |food| %>
+      <tr>
+        <td><%= food.food.name %></td>
+        <td><%= food.quantity %> <%= food.food.measurement_unit %></td>
+        <td><span>$<%= food.food.price * food.quantity.to_i%></span></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+
+<button class="btn btn-danger" >
+  <%= link_to 'Come back', recipe_path(@recipe.id)%>
+</button>

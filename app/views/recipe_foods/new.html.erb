@@ -1,0 +1,26 @@
+<section class="w-50 h-50 p-3 mx-auto border">
+
+  <%= form_with model: [@recipe, @recipe.recipe_foods.create] do |form|%>
+  
+    <div class="">
+      <%= form.select :food_id, Food.all.collect {|food| [food.name, food.id]},{
+      include_blank: " - Select aliment - "}, required: true, class:"w-100" %>
+    </div>
+
+    <br />
+
+    <div class="">
+      <%= form.number_field :quantity , class:"w-100b" , required: true, placeholder: :quantity, min: 1%>
+    </div>
+
+    <br />
+
+
+    <div class="d-flex justify-content-xl-between">
+      <%= form.submit "Add", class:"btn btn-primary" %>
+      <%=link_to 'Back to the recipe', recipe_path(@recipe.id), class:"btn btn-danger"%>
+    </div>
+
+  <%end%>
+
+</section>

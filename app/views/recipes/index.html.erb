@@ -1,0 +1,35 @@
+<h3><%= link_to 'Add Recipe', new_recipe_path %></h3>
+<table class="table table-striped table-bordered table-hover">
+
+  <% if @recipes.empty? %>
+    <p>No recipe here, please add recipe</p>
+  <% else %>
+  
+    <% @recipes.each do |recipe| %>
+
+      <% if can? :read, recipe %>
+
+        <%= link_to recipe_path(recipe.id, recipe) do %>
+          <article class='border d-flex'>
+            <div class='border col-2 d-flex flex-column justify-content-center align-items-center'>
+              <h4><%= recipe.name %></h4>
+              <%= link_to "Remove", recipe_path(recipe), data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?"
+                    }, class: "btn btn-danger" %>
+            </div>      
+
+            <div class='border col'>
+                  <%= recipe.description %>
+            </div> 
+
+          </article>
+        <% end %>
+        <br />
+
+      <% end %>
+    
+    <% end %> 
+
+  <% end %>
+</table>

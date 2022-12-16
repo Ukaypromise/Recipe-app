@@ -1,0 +1,32 @@
+<h2>Add Recipe</h2>
+<%= form_with model: @recipe, url: recipes_path, method: :post do |form| %>
+  <div class="mb-3">
+    <%= form.label :Name, class:'form-label' %><br>
+    <%= form.text_field :name, class:'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :'Preparation_Time: ' %><br>
+    <%= form.text_field :preparation_time, class:'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :"Cooking_time:" %><br>
+    <%= form.text_field :cooking_time, class:'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :"Description:" %><br>
+    <%= form.text_field :description, class:'form-control' %>
+  </div>
+
+  <div class="custom-control custom-checkbox">
+    <%= form.label :"public:" %>
+    <%= form.check_box :public %>
+  </div>
+
+  <div class="mb-3">
+    <br>
+    <%= form.submit :'Create Recipe', class:'btn btn-secondary' %>
+  </div>
+<% end %>
