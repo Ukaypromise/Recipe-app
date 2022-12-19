@@ -1,7 +1,5 @@
 databases:
   - name: postgres
-    databaseName: Recipe_app_production
-    user: postgres
     ipAllowList: []
 
 services:
@@ -21,4 +19,4 @@ services:
     name: redis
     ipAllowList: []
     plan: free
-    maxmemoryPolicy: neoviction
+    maxmemoryPolicy: noeviction
